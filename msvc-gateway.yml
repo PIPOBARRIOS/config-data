@@ -1,0 +1,87 @@
+server:
+  port: 8088
+  
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      #defaultZone: http://192.168.2.101:8761/eureka
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    hostname: localhost
+
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: gallery-services
+          uri: lb://msvc-gallery
+          predicates:
+            - Path=/api/gallery/**
+
+        - id: prices-services
+          uri: lb://msvc-prices
+          predicates:
+            - Path=/api/prices/**
+
+        - id: comments-services
+          uri: lb://msvc-comments
+          predicates:
+            - Path=/api/comments/**
+
+        - id: utility-services
+          uri: lb://msvc-utility
+          predicates:
+            - Path=/api/utility/**
+
+        - id: filter-services
+          uri: lb://msvc-filter
+          predicates:
+            - Path=/api/filter/**
+
+        - id: profile-services
+          uri: lb://msvc-profile
+          predicates:
+            - Path=/api/profile/**
+
+        - id: users-services
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/users/**
+
+        - id: usersaccess-services
+          uri: lb://msvc-usersaccess
+          predicates:
+            - Path=/api/useraccess/**
+
+        - id: homeNav-services
+          uri: lb://msvc-homenav
+          predicates:
+            - Path=/api/homenav/**
+
+        - id: offers-services
+          uri: lb://msvc-offers
+          predicates:
+            - Path=/api/offers/**
+
+        - id: penality-services
+          uri: lb://msvc-penality
+          predicates:
+            - Path=/api/penality/**
+
+
+
+
+
+
+
+
+
+
+
+
+

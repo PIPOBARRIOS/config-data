@@ -1,7 +1,7 @@
 server:
   port: 6080
   servlet:
-    context-path: /api
+    context-path: /api/offers
 
     
 eureka:
